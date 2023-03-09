@@ -2,7 +2,10 @@ import { useParams } from 'react-router-dom';
 
 function Detail({ shoes }) {
   let { id } = useParams();
-  id = shoes[id].id;
+  let shoesId = shoes.filter((data) => {
+    return id == id;
+  });
+  console(shoesId);
 
   return (
     <div className='container'>
