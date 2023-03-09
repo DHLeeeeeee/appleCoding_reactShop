@@ -5,13 +5,27 @@ import { useState } from 'react';
 // import bg from './img/bg.png';
 import data from './data.js';
 import { Routes, Route, Link } from 'react-router-dom';
-import Detail from './Detail';
+import Detail from './detail';
 
 function App() {
   let [shoes] = useState(data);
 
   return (
     <div className='App'>
+      {/* 
+          라우터로 페이지 나누는 법 
+          <Routes>
+            <Route path='/' element={<div>메인임</div>} />
+            <Route path='/detail' element={<div>상세페이지</div>} />
+          </Routes> 
+
+          path는 경로
+          element는 해당 경로에 보여줄 컴포넌트
+
+          리액트에서 a 태그를 쓰고 싶을때 라우터의 Link 태그를 사용
+          Link 태그의 to 속성이 a 태그의 href 속성과 같음
+      */}
+
       <Navbar bg='light' variant='light'>
         <Container>
           <Navbar.Brand>ShoeShop</Navbar.Brand>
