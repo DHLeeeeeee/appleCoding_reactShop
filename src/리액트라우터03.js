@@ -18,7 +18,7 @@ function App() {
           <Navbar.Brand>ShoeShop</Navbar.Brand>
           <Nav className='me-auto'>
             <Nav.Link onClick={() => navigate('/')}>Home</Nav.Link>
-            <Nav.Link onClick={() => navigate('/detail/0')}>Detail</Nav.Link>
+            <Nav.Link onClick={() => navigate('/detail')}>Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -26,6 +26,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main shoes={shoes} />} />
 
+        {/* 상세페이지를 많이 만들어야 한다면 :URL파라미터 사용 */}
         <Route path='/detail/:id' element={<Detail shoes={shoes} />} />
 
         <Route path='*' element={<div>없는페이진데요</div>} />
@@ -52,7 +53,7 @@ function Main({ shoes }) {
       <div className='container'>
         <div className='row'>
           {shoes.map(function (it, i) {
-            return <Product index={i} shoes={it} key={i} />;
+            return <Product index={i} shoes={it} />;
           })}
         </div>
       </div>
@@ -61,10 +62,8 @@ function Main({ shoes }) {
 }
 
 function Product({ index, shoes }) {
-  let navigate = useNavigate();
-
   return (
-    <div className='col-md-4' onClick={() => navigate(`detail/${index}`)}>
+    <div className='col-md-4'>
       <img src={`https://codingapple1.github.io/shop/shoes${index + 1}.jpg`} width={'80%'} />
       <h4>{shoes.title}</h4>
       <p>{shoes.price}</p>
